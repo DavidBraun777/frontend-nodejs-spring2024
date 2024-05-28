@@ -1,0 +1,83 @@
+# ---------------------------------------------------------------------------------*
+# This will prevent your local modules, debug logs, and others files
+# from being copied to remote repo.
+# ---------------------------------------------------------------------------------*
+node_modules
+npm-debug.
+
+# Compiled source
+# ---------------
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Local git related files
+# -----------------------
+# when differemetn meber of the team are using differemnt version of git
+# on different OS. Logical generated git files that end up in the remote repo
+# might cause some issues.
+# ignore .git and .cache folders
+.git
+.cache
+
+# Markdown files
+# --------------
+# add rule here for markdown files (md) beside all README*.md
+# such has file that might contain confidential info like secret.md
+# *.md
+# !README*.md
+# README-secret.md
+
+# Build and Release Folders
+# -------------------------
+bin-debug/
+bin-release/
+[Oo]bj/
+[Bb]in/
+
+# IDE geneted files
+# -----------------
+# for example for VS Code
+.settings/
+.vscode/
+*.code-workspace
+
+# Executables
+*.swf
+*.air
+*.ipa
+*.apk
+
+# Packages
+# --------
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs
+*.log
+
+# OS generated files
+# ------------------
+# this list includes all IS genereted files
+# For Windows, Linux and Mac OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# add more here as needed 
+# ---------------------------------------------------------------------------------*
