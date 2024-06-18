@@ -1,4 +1,0 @@
-Update this frontend so that our class is setup for the details
-Yann as TRAINER
-CLASSMATES as TRAINEES
-Have MongoDB host the details to be called when updating the website frontend
