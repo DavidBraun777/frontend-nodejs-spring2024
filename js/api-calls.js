@@ -18,7 +18,7 @@ monthsToggleButton.addEventListener('click', evt => {
 
 function getMonths() {
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', `${process.env.API}/months`, true); // replace with your API endpoint
+  xhr.open('GET', `${Netlify.env.get(API)}/months`, true); // replace with your API endpoint
   xhr.onload = function() {
     if (xhr.status === 200) {
       var months = JSON.parse(xhr.responseText);
