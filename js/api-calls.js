@@ -17,25 +17,32 @@ monthsToggleButton.addEventListener('click', evt => {
 });
 
 async function getMyUrl() {
-  const response = await fetch('/.netlify/functions/getMyUrl');
+  const response = await fetch('/.netlify/functions/getMyUrl'); // Correct URL for the Netlify function
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
   const data = await response.json();
   return data.myURL;
 }
 
 async function getMonths() {
-  const apiUrl = await getMyUrl();
+  try {
+    const apiUrl = await getMyUrl();
 
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', `${apiUrl}/months`, true); // Use the API URL from the Netlify function
-  xhr.onload = function() {
-    if (xhr.status === 200) {
-      var months = JSON.parse(xhr.responseText);
-      var list = '';
-      for (var i = 0; i < months.length; i++) {
-        list += '<li>' + months[i] + '</li>';
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', `${apiUrl}/months`, true); // Use the API URL from the Netlify function
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        var months = JSON.parse(xhr.responseText);
+        var list = '';
+        for (var i = 0; i < months.length; i++) {
+          list += '<li>' + months[i] + '</li>';
+        }
+        document.getElementById('months-list').innerHTML = '<ul>' + list + '</ul>';
       }
-      document.getElementById('months-list').innerHTML = '<ul>' + list + '</ul>';
-    }
-  };
-  xhr.send();
+    };
+    xhr.send();
+  } catch (error) {
+    console.error('Error fetching the API URL:', error);
+  }
 }
