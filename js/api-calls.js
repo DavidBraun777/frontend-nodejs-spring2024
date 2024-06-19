@@ -17,17 +17,25 @@ monthsToggleButton.addEventListener('click', evt => {
 });
 
 async function getMyUrl() {
-  const response = await fetch('/.netlify/functions/getMyUrl'); // Correct URL for the Netlify function
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
+  try {
+    const response = await fetch('/.netlify/functions/getMyUrl');
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    return data.myURL;
+  } catch (error) {
+    console.error('Error fetching the API URL:', error);
   }
-  const data = await response.json();
-  return data.myURL;
 }
 
 async function getMonths() {
   try {
     const apiUrl = await getMyUrl();
+
+    if (!apiUrl) {
+      throw new Error('API URL is not available');
+    }
 
     var xhr = new XMLHttpRequest();
     xhr.open('GET', `${apiUrl}/months`, true); // Use the API URL from the Netlify function
@@ -39,10 +47,15 @@ async function getMonths() {
           list += '<li>' + months[i] + '</li>';
         }
         document.getElementById('months-list').innerHTML = '<ul>' + list + '</ul>';
+      } else {
+        console.error('Error fetching months:', xhr.status, xhr.statusText);
       }
+    };
+    xhr.onerror = function() {
+      console.error('Request error');
     };
     xhr.send();
   } catch (error) {
-    console.error('Error fetching the API URL:', error);
+    console.error('Error fetching months:', error);
   }
 }

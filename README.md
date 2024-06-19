@@ -1,13 +1,12 @@
-# Drop landing page demo
+# Drop Landing Page Demo
 
 Demo site to be used for [Netlify Drop](https://app.netlify.com/drop).
 
 Thanks to [Andy Bell](https://piccalil.li/) for [User-controlled light/dark mode](https://piccalil.li/tutorial/create-a-user-controlled-dark-or-light-mode/) and [Rasmus Andersson](https://twitter.com/rsms) for creating [Inter UI font](https://rsms.me/inter/).
 
-For more info about this training contact:
+## About this Project
 
-> [Yann Mulonda](https://github.com/YannMjl)
-
+This project is a demo site for showcasing a responsive landing page with user-controlled light/dark mode. It's built using modern web technologies and is designed to be easily customizable.
 
 ## Getting Started
 
@@ -57,3 +56,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For more information about this training, please contact [Yann Mulonda](https://github.com/YannMjl).
 
+## Acknowledgments
+
+Special thanks to Andy Bell and Rasmus Andersson for their contributions to this project.
