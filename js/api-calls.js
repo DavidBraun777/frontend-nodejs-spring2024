@@ -16,11 +16,17 @@ monthsToggleButton.addEventListener('click', evt => {
   getMonths();
 });
 
-function getMonths() {
-  const apiUrl = process.env.API; // Correctly accessing the environment variable
+async function getMyUrl() {
+  const response = await fetch('/.netlify/functions/getMyUrl');
+  const data = await response.json();
+  return data.myURL;
+}
+
+async function getMonths() {
+  const apiUrl = await getMyUrl();
 
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', `${apiUrl}/months`, true); // Use the API URL from environment variable
+  xhr.open('GET', `${apiUrl}/months`, true); // Use the API URL from the Netlify function
   xhr.onload = function() {
     if (xhr.status === 200) {
       var months = JSON.parse(xhr.responseText);
